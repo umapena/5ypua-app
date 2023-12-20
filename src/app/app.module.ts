@@ -12,6 +12,7 @@ import { HospedesComponent } from './hospedes/hospedes.component';
 import { AcomodacoesComponent } from './acomodacoes/acomodacoes.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReservasComponent,
     HospedesComponent,
     AcomodacoesComponent,
-    FuncionariosComponent
+    FuncionariosComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,

@@ -30,7 +30,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#acomodacaoCadastroModal">Salvar</button>
+              <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#acomodacaoCadastroModal" [disabled]="!novaAcomodacao.numero || !novaAcomodacao.valorDiaria || !novaAcomodacao.qtdHospedes">Salvar</button>
             </div>
           </form>
         </div>
@@ -64,7 +64,7 @@
             </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#acomodacaoEdicaoModal">Atualizar</button>
+                <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#acomodacaoEdicaoModal" [disabled]="!acomodacaoEditada.numero || !acomodacaoEditada.valorDiaria || !acomodacaoEditada.qtdHospedes">Atualizar</button>
               </div>
             </form>
           </div>

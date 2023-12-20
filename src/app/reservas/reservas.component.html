@@ -43,6 +43,10 @@
                 <input class="form-control" id="qtdDiarais" name="qtdDiarais" type="number" placeholder="Quantidade Diárias" required  [(ngModel)]="novaReserva.qtdDiarais"/>
             </div>
             <div class="mb-3">
+              <label class="form-label" for="qtdHospedes">Quantidade Hóspedes</label>
+              <input class="form-control" id="qtdHospedes" name="qtdHospedes" type="number" placeholder="Quantidade Hóspedes" required  [(ngModel)]="novaReserva.qtdHospedes"/>
+            </div>
+            <div class="mb-3">
               <label class="form-label" for="statusPagamento">Status Pagamento</label>
               <select class="form-control mb-3" id="statusPagamento" name="statusPagamento" [(ngModel)]="novaReserva.statusPagamento">
                 <option value="PENDENTE" selected>Pendente</option>
@@ -60,7 +64,7 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#reservaCadastroModal">Salvar</button>
+              <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#reservaCadastroModal" [disabled]="!novaReserva.idAcomodacao || !novaReserva.idHospede || !novaReserva.dataInicial || !novaReserva.qtdDiarais || !novaReserva.qtdHospedes || !novaReserva.dataCheckIn || !novaReserva.dataCheckOut">Salvar</button>
             </div>
           </form>
         </div>
@@ -107,6 +111,10 @@
                   <input class="form-control" id="qtdDiarais" name="qtdDiarais" type="number"  datetime="yyyy-MM-dd" placeholder="Quantidade Diárias" required  [(ngModel)]="reservaEditada.qtdDiarais"/>
               </div>
               <div class="mb-3">
+                <label class="form-label" for="qtdHospedes">Quantidade Hóspedes</label>
+                <input class="form-control" id="qtdHospedes" name="qtdHospedes" type="number"  datetime="yyyy-MM-dd" placeholder="Quantidade Hóspedes" required  [(ngModel)]="reservaEditada.qtdHospedes"/>
+              </div>
+              <div class="mb-3">
                 <label class="form-label" for="statusPagamento">Status Pagamento</label>
                 <select class="form-control custom-select custom-select-lg mb-3" id="statusPagamento"  name="statusPagamento" [(ngModel)]="reservaEditada.statusPagamento">
                   <option value="PENDENTE" selected>Pendente</option>
@@ -123,7 +131,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="limparObjetoEdicao()">Cancelar</button>
-                <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#reservaEdicaoModal">Atualizar</button>
+                <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#reservaEdicaoModal" [disabled]="!reservaEditada.idAcomodacao || !reservaEditada.idHospede || !reservaEditada.dataInicial || !reservaEditada.qtdDiarais || !reservaEditada.qtdHospedes || !reservaEditada.dataCheckIn || !reservaEditada.dataCheckOut">Atualizar</button>
               </div>
             </form>
           </div>
@@ -140,6 +148,7 @@
           <th scope="col">Hóspede</th>
           <th scope="col">Data Reserva</th>
           <th scope="col">Diárias</th>
+          <th scope="col">Hóspedes</th>
           <th scope="col">Check-In</th>
           <th scope="col">Check-Out</th>
           <th scope="col">Pagamento</th>
@@ -153,6 +162,7 @@
           <td>{{ getDescricaoHospede(reserva.idHospede) }}</td>
           <td>{{ formatData(reserva.dataInicial) }}</td>
           <td>{{ reserva.qtdDiarais }}</td>
+          <td>{{ reserva.qtdHospedes }}</td>
           <td>{{ formatData(reserva.dataCheckIn) }}</td>
           <td>{{ formatData(reserva.dataCheckOut) }}</td>
           <td><span class="badge bg-{{ reserva.statusPagamento === 'PAGO' ? 'success' : 'danger' }}">{{ reserva.statusPagamento }}</span> </td>

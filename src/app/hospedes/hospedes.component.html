@@ -26,7 +26,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#hospedeCadastroModal">Salvar</button>
+              <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#hospedeCadastroModal" [disabled]="!novoHospede.nome || !novoHospede.cpf">Salvar</button>
             </div>
           </form>
         </div>
@@ -56,7 +56,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#hospedeEdicaoModal">Atualizar</button>
+                <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#hospedeEdicaoModal" [disabled]="!hospedeEditado.nome || !hospedeEditado.cpf">Atualizar</button>
               </div>
             </form>
           </div>

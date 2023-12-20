@@ -1,0 +1,106 @@
+<div class="body">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#usuarioCadastroModal">
+      + Usuário
+    </button>
+  
+    <!-- Modal Cadastro -->
+    <div class="modal fade" id="usuarioCadastroModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Novo usuário</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="criarUsuario()">
+              <div class="mb-3">
+                  <label class="form-label" for="usuario">Usuário</label>
+                  <input class="form-control" id="usuario" name="usuario" type="text" placeholder="Usuario" required [(ngModel)]="novoUsuario.usuario"/>
+              </div>
+              <div class="mb-3">
+                  <label class="form-label" for="password">Senha</label>
+                  <input class="form-control" id="password" name="password" type="text" placeholder="Senha" required  [(ngModel)]="novoUsuario.password"/>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="nivel">Nível</label>
+                <input class="form-control" id="nivel" name="nivel" type="number" placeholder="Nivel" required  [(ngModel)]="novoUsuario.nivel"/>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#usuarioCadastroModal">Salvar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+      <!-- Modal Edição -->
+      <div class="modal fade" id="usuarioEdicaoModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editando usuário</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form (ngSubmit)="atualizarUsuario()">
+                <div class="mb-3">
+                    <label class="form-label" for="usuario">Usuário</label>
+                    <input class="form-control" id="usuario" name="usuario" type="text" placeholder="Usuario" data-sb-validations="required" [(ngModel)]="usuarioEditado.usuario"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Senha</label>
+                    <input class="form-control" id="password" name="password" type="text" placeholder="Senha" data-sb-validations="required"  [(ngModel)]="usuarioEditado.password"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="nivel">Nível</label>
+                    <input class="form-control" id="nivel" name="nivel" type="number" placeholder="Nivel" data-sb-validations="required"  [(ngModel)]="usuarioEditado.nivel"/>
+                  </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#usuarioEdicaoModal">Atualizar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    <div>
+      <table class="table table-striped listagem table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Usuário</th>
+            <th scope="col">Senha</th>
+            <th scope="col">Nível</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.usuario }}</td>
+            <td>{{ usuario.password }}</td>
+            <td>{{ usuario.nivel }}</td>
+            <td style="text-align: right;">
+              <button type="button" class="btn btn-sm" aria-label="Left Align" data-toggle="modal" data-target="#usuarioEdicaoModal" (click)="usuarioEditado = usuario">
+                <span class="fa fa-pencil fa-md" aria-hidden="true"></span></button>
+  
+                <button type="button" class="btn btn-sm" aria-label="Left Align" (click)="excluirUsuario(usuario.id)">
+                  <span class="fa fa-trash-o fa-md" aria-hidden="true"></span></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  
+  </div>
+  
